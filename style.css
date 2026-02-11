@@ -1,0 +1,60 @@
+:root {
+    --bg: #0b0f17;
+    --frame: #ffffff;
+
+    /* Mobile bottom nav */
+    --bottom-menu-base: 60px;
+    --bottom-menu-h: calc(var(--bottom-menu-base) + env(safe-area-inset-bottom));
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: #111;
+}
+
+/* Mobile-first: PWA full-screen */
+.app-shell {
+    min-height: 100svh;
+    padding: 0;
+}
+
+.app {
+    width: 100vw;
+    height: 100svh;
+    background: var(--frame);
+    overflow: hidden;
+    position: relative;
+}
+
+.app__layout {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr var(--bottom-menu-h);
+    grid-template-columns: 1fr;
+}
+
+.app__main {
+    min-height: 0;
+}
+
+.app__bottom-menu {
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+/* Hidden in mobile for now (wireframe-only) */
+.app__map {
+    display: none;
+}
