@@ -58,3 +58,51 @@ body {
 .app__map {
     display: none;
 }
+
+@media (min-width: 900px){
+  :root{
+    --card-radius: 34px;
+    --card-border: 3px;
+  }
+
+  body{
+    background: var(--bg);
+  }
+
+  .app-shell{
+    min-height: 100svh;
+    padding: 16px;
+    display: grid;
+    place-items: center;
+  }
+
+  .app{
+    width: 100%;
+    max-width: 1200px;
+    height: 80svh;
+
+    border: var(--card-border) solid #111;
+    border-radius: var(--card-radius);
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  }
+
+  .app__layout{
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 420px; /* main | map */
+    grid-template-areas: "main map";
+  }
+
+  .app__main{
+    grid-area: main;
+    border-right: 3px solid #111;
+  }
+
+  .app__map{
+    grid-area: map;
+    display: block; /* se ve en desktop */
+  }
+
+  .app__bottom-menu{
+    display: none; /* se oculta en desktop */
+  }
+}
