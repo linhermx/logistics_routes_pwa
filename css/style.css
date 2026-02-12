@@ -263,6 +263,8 @@ body {
     gap: .9rem;
     max-height: 50svh;
     overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     padding-right: .25rem;
@@ -305,7 +307,9 @@ body {
 }
 
 .app__route-input:focus {
-    white-space: normal;
+    white-space: nowrap;
+    overflow-x: auto;
+    text-overflow: clip;
 }
 
 .app__route-marker {
