@@ -29,7 +29,7 @@
     /* Route Builder spacing (mobile-first) */
     --rb-pad-y: 1.75rem;
     --rb-pad-x: 2rem;
-    --rb-gap: 1.25rem;
+    --rb-gap: 0.8rem;
 
     --rb-title-size: 2rem;
     --rb-title-leading: 1.1;
