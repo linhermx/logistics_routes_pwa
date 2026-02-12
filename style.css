@@ -104,7 +104,7 @@ body {
 }
 
 .app__bottom-menu {
-    background: #cfe9ff;
+    background: #f24b4b;
     padding: 12px 16px;
     padding-bottom: calc(12px + env(safe-area-inset-bottom));
 }
