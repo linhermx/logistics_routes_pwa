@@ -175,6 +175,63 @@ body {
 }
 
 /* =========================
+   TOPBAR (shared)
+========================= */
+.app__topbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+}
+
+.app__topbar-btn {
+    width: var(--rb-icon-size);
+    height: var(--rb-icon-size);
+    border: 0;
+    background: transparent;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.app__topbar-btn i {
+    font-size: 20px;
+    color: #111;
+}
+
+.app__topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app__topbar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    object-fit: cover;
+    background: rgba(0, 0, 0, .06);
+}
+
+.app__topbar-meta {
+    display: grid;
+    line-height: 1.05;
+}
+
+.app__topbar-hello {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.app__topbar-name {
+    font-size: 16px;
+    color: #111;
+    font-weight: 700;
+}
+
+/* =========================
    ROUTE BUILDER (shared)
 ========================= */
 .app__route-builder {
@@ -330,7 +387,7 @@ body {
         --rb-pad-x: 1.25rem;
         --rb-gap: 0.8rem;
 
-        --rb-title-size: 1.5rem;
+        --rb-title-size: 1.3rem;
         --rb-kicker-gap: 1.75rem;
 
         --rb-item-col-marker: 24px;
@@ -351,6 +408,10 @@ body {
 
     .app__route-title {
         margin-top: 15px;
+    }
+
+    .app__topbar-name {
+        font-size: 15px;
     }
 
     .app__route-btn--params {
@@ -389,6 +450,30 @@ body {
     .app__main {
         grid-area: main;
         padding-left: var(--main-left-gutter);
+    }
+
+    .app__topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .app__topbar-btn--menu {
+        display: none;
+    }
+
+    .app__topbar-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .app__topbar-hello {
+        font-size: 12px;
+    }
+
+    .app__topbar-name {
+        font-size: 17px;
+        line-height: 1.05;
     }
 
     .app__map {

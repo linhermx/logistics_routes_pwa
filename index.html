@@ -26,9 +26,24 @@
 
                 <main class="app__main">
                     <section class="app__route-builder" aria-labelledby="route-title">
-                        <header class="app__route-header">
+                        <nav class="app__topbar" aria-label="User menu">
+                            <button class="app__topbar-btn app__topbar-btn--menu" type="button"
+                                aria-label="Menú de usuario">
+                                <i class="fa-solid fa-bars"></i>
+                            </button>
+
                             <p class="app__route-kicker">Cotizador Logístico – LINHER</p>
 
+                            <div class="app__topbar-user" aria-label="Usuario">
+                                <img class="app__topbar-avatar" src="assets/avatar.png" alt="Foto de perfil" />
+                                <div class="app__topbar-meta">
+                                    <span class="app__topbar-hello">Hola,</span>
+                                    <span class="app__topbar-name">Joel</span>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <header class="app__route-header">
                             <h1 id="route-title" class="app__route-title">
                                 ¿A dónde te diriges?
                             </h1>
@@ -39,7 +54,7 @@
                                 <li class="app__route-item app__route-item--origin">
                                     <i class="fa-solid fa-location-dot app__route-marker"></i>
                                     <div class="app__route-field">
-                                        <input class="app__route-input" type="text" placeholder="Ciudad de México"/>
+                                        <input class="app__route-input" type="text" placeholder="Ciudad de México" />
 
                                         <button class="app__route-btn app__route-btn--search" type="button"
                                             aria-label="Buscar ruta">
