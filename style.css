@@ -25,6 +25,26 @@
 
     /* Font */
     --font-primary: 'Poppins', sans-serif;
+
+    /* Route Builder spacing (mobile-first) */
+    --rb-pad-y: 1.75rem;
+    --rb-pad-x: 2rem;
+    --rb-gap: 1.25rem;
+
+    --rb-title-size: 2rem;
+    --rb-title-leading: 1.1;
+    --rb-kicker-gap: 1.5rem;
+
+    --rb-item-col-marker: 28px;
+    --rb-item-col-params: 44px;
+    --rb-item-gap: 12px;
+
+    --rb-field-py: 14px;
+    --rb-field-pr: 58px;
+    --rb-field-pl: 18px;
+
+    --rb-btn-size: 44px;
+    --rb-icon-size: 25px;
 }
 
 /* =========================
@@ -159,14 +179,14 @@ body {
 ========================= */
 .app__route-builder {
     display: grid;
-    gap: 1.25rem;
-    padding: 1.75rem 2rem;
+    gap: var(--rb-gap);
+    padding: var(--rb-pad-y) var(--rb-pad-x);
     width: 100%;
     max-width: 100%;
 }
 
 .app__route-kicker {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 var(--rb-kicker-gap) 0;
     font-weight: 600;
     font-size: 1rem;
     color: #111;
@@ -175,7 +195,8 @@ body {
 .app__route-title {
     margin: 0;
     letter-spacing: -0.4px;
-    font-size: 2rem;
+    font-size: var(--rb-title-size);
+    line-height: var(--rb-title-leading);
     font-weight: 500;
     color: #7a7a7a;
 }
@@ -194,9 +215,9 @@ body {
 /* One row: marker | field | params */
 .app__route-item {
     display: grid;
-    grid-template-columns: 28px 1fr 44px;
+    grid-template-columns: var(--rb-item-col-marker) 1fr var(--rb-item-col-params);
     align-items: center;
-    gap: 12px;
+    gap: var(--rb-item-gap);
 }
 
 /* Input capsule with inner search button */
@@ -204,7 +225,7 @@ body {
     position: relative;
     background: #ffffff;
     border-radius: 999px;
-    padding: 14px 58px 14px 18px;
+    padding: var(--rb-field-py) var(--rb-field-pr) var(--rb-field-py) var(--rb-field-pl);
     /* reserve for red search btn */
 }
 
@@ -216,10 +237,17 @@ body {
     font-size: 1.05rem;
     font-weight: 500;
     color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app__route-input:focus {
+    white-space: normal;
 }
 
 .app__route-marker {
-    font-size: 25px;
+    font-size: var(--rb-icon-size);
     color: #ef4444;
 }
 
@@ -234,7 +262,7 @@ body {
 }
 
 .app__route-btn i {
-    font-size: 25px;
+    font-size: var(--rb-icon-size);
     color: #111;
 }
 
@@ -244,8 +272,8 @@ body {
     right: 8px;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
+    width: var(--rb-btn-size);
+    height: var(--rb-btn-size);
     border-radius: 999px;
     background: #ef4444;
 }
@@ -256,13 +284,13 @@ body {
 
 /* Params button sits outside on the right */
 .app__route-btn--params {
-    width: 44px;
-    height: 44px;
+    width: var(--rb-btn-size);
+    height: var(--rb-btn-size);
 }
 
 .app__route-btn--params i {
     color: #111;
-    font-size: 25px;
+    font-size: var(--rb-icon-size);
 }
 
 /* Add destination */
@@ -285,6 +313,48 @@ body {
 .app__route-add i {
     font-size: 14px;
     color: #111;
+}
+
+/* =========================
+   MOBILE OVERRIDES ONLY
+========================= */
+
+@media (max-width: 480px) {
+    :root {
+        --rb-pad-y: 1.25rem;
+        --rb-pad-x: 1.25rem;
+        --rb-gap: 0.8rem;
+
+        --rb-title-size: 1.5rem;
+        --rb-kicker-gap: 1.75rem;
+
+        --rb-item-col-marker: 24px;
+        --rb-item-col-params: 40px;
+        --rb-item-gap: 10px;
+
+        --rb-field-py: 12px;
+        --rb-field-pr: 54px;
+        --rb-field-pl: 16px;
+
+        --rb-btn-size: 40px;
+        --rb-icon-size: 20px;
+    }
+
+    .app__route-kicker {
+        display: none;
+    }
+
+    .app__route-title {
+        margin-top: 15px;
+    }
+
+    .app__route-btn--params {
+        opacity: .75;
+    }
+
+    .app__route-destinations {
+        gap: var(--rb-gap);
+    }
 }
 
 /* =========================
