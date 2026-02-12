@@ -219,6 +219,8 @@ body {
     display: grid;
     gap: 1.25rem;
     padding: 1.75rem 2rem;
+    max-width: 720px;
+    width: 100%;
 }
 
 .app__route-kicker {
@@ -307,7 +309,7 @@ body {
 }
 
 .app__route-btn--search i {
-  color: #fff;
+    color: #fff;
 }
 
 /* Params button sits outside on the right */
