@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Logistics Routes PWA - LINHER</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -16,7 +24,45 @@
                     <div class="app__side-menu-pill"></div>
                 </aside>
 
-                <main class="app__main"></main>
+                <main class="app__main">
+                    <section class="app__route-builder" aria-labelledby="route-title">
+                        <header class="app__route-header">
+                            <p class="app__route-kicker">Cotizador Logístico – LINHER</p>
+
+                            <h1 id="route-title" class="app__route-title">
+                                ¿A dónde te diriges?
+                            </h1>
+                        </header>
+
+                        <section class="app__route-destinations" aria-label="Destinos">
+                            <ul class="app__route-list">
+                                <li class="app__route-item app__route-item--origin">
+                                    <i class="fa-solid fa-location-dot app__route-marker"></i>
+                                    <div class="app__route-field">
+                                        <input class="app__route-input" type="text" placeholder="Ciudad de México"
+                                            readonly />
+
+                                        <button class="app__route-btn app__route-btn--search" type="button"
+                                            aria-label="Buscar ruta">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                    </div>
+
+                                    <button class="app__route-btn app__route-btn--params" type="button"
+                                        aria-label="Parámetros">
+                                        <i class="fa-solid fa-sliders"></i>
+                                    </button>
+                                </li>
+                            </ul>
+
+                            <button class="app__route-add" type="button">
+                                <i class="fa-solid fa-plus"></i>
+                                Añadir destino
+                            </button>
+                        </section>
+                    </section>
+
+                </main>
 
                 <section class="app__map" aria-label="Map panel"></section>
 

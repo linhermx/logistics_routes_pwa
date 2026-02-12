@@ -1,10 +1,10 @@
 :root {
-    --bg: #0b0f17;
+    --bg: #f3f3f3;
 
     /* Card */
     --frame: #ffffff;
-    --card-radius: 32px;
-    --card-border: 4px;
+    --card-radius: 30px;
+    --card-border: 2px;
     --inner-radius: calc(var(--card-radius) - var(--card-border));
 
     /* Wireframe colors */
@@ -12,9 +12,9 @@
     --c-map: #dddddd;
 
     /* Menu pill */
-    --side-pill-w: 52px;
+    --side-pill-w: 58px;
     --side-pill-color: #f24b4b;
-    -main-left-gutter: calc(var(--side-pill-w) + 16px);
+    --main-left-gutter: calc(var(--side-pill-w) + 5px);
 
     /* Lines */
     --border: #111;
@@ -22,6 +22,9 @@
     /* Mobile bottom nav */
     --bottom-menu-base: 60px;
     --bottom-menu-h: calc(var(--bottom-menu-base) + env(safe-area-inset-bottom));
+
+    /* Font */
+    --font-primary: 'Poppins', sans-serif;
 }
 
 * {
@@ -35,7 +38,7 @@ body {
 
 body {
     margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: var(--font-primary);
     background: var(--bg);
     color: #111;
 }
@@ -91,11 +94,10 @@ body {
     }
 
     .app {
+        position: relative;
         width: 100%;
         max-width: 1200px;
         height: 75svh;
-
-        border: var(--card-border) solid var(--border);
         border-radius: var(--card-radius);
         box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
     }
@@ -135,7 +137,7 @@ body {
 
     .app__side-menu-pill {
         width: var(--side-pill-w);
-        height: calc(100% + 1px);
+        height: 100%;
         /* anti “costura” */
         background: var(--side-pill-color);
         border: 0;
@@ -207,4 +209,137 @@ body {
 
 .map-modal__body {
     height: calc(100% - 52px);
+}
+
+/* =========================================
+   ROUTE BUILDER
+========================================= */
+
+.app__route-builder {
+    display: grid;
+    gap: 1.25rem;
+    padding: 1.75rem 2rem;
+}
+
+.app__route-kicker {
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111;
+}
+
+.app__route-title {
+    margin: 0;
+    letter-spacing: -0.4px;
+    font-size: 2.0rem;
+    font-weight: 500;
+    color: #7a7a7a;
+}
+
+.app__route-destinations {
+    display: grid;
+    gap: .9rem;
+}
+
+.app__route-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* One row: marker | field | params */
+.app__route-item {
+    display: grid;
+    grid-template-columns: 28px 1fr 44px;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Input capsule with inner search button */
+.app__route-field {
+    position: relative;
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 14px 58px 14px 18px;
+    /* reserve for red search btn */
+}
+
+.app__route-input {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.app__route-marker {
+    font-size: 25px;
+    color: #ef4444;
+}
+
+/* Buttons */
+.app__route-btn {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+
+.app__route-btn i {
+    font-size: 25px;
+    color: #111;
+}
+
+/* Search button sits inside the field */
+.app__route-btn--search {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: #ef4444;
+}
+
+.app__route-btn--search i {
+  color: #fff;
+}
+
+/* Params button sits outside on the right */
+.app__route-btn--params {
+    width: 44px;
+    height: 44px;
+}
+
+.app__route-btn--params i {
+    color: #111;
+    font-size: 25px;
+}
+
+/* Add destination */
+.app__route-add {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+
+    background: transparent;
+    border: 0;
+    padding: .35rem 0;
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: #9aa0a6;
+    cursor: pointer;
+}
+
+.app__route-add i {
+    margin-right: 0;
+    font-size: 14px;
+    color: #111;
 }
