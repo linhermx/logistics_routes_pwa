@@ -204,6 +204,11 @@ body {
 .app__route-destinations {
     display: grid;
     gap: .9rem;
+    max-height: 50svh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding-right: .25rem;
 }
 
 .app__route-list {
