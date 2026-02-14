@@ -5,7 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Logistics Routes PWA - LINHER</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -13,14 +21,248 @@
         <div class="app" role="application" aria-label="Logistics routes PWA">
             <div class="app__layout">
                 <aside class="app__side-menu" aria-label="Side menu">
-                    <div class="app__side-menu-pill"></div>
+                    <div class="app__side-menu-pill">
+                        <nav class="app__side-nav">
+                            <ul class="app__side-list">
+                                <li class="app__side-item">
+                                    <div class="app__side-logo">
+                                        <i class="fa-solid fa-fire"></i>
+                                    </div>
+                                </li>
+                                <li class="app__side-item">
+                                    <a href="#" class="app__side-link app__side-link--active" aria-label="Inicio">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="app__side-item">
+                                    <a href="#" class="app__side-link" aria-label="Cotizaciones">
+                                        <i class="fa-solid fa-money-bill-wave"></i>
+                                    </a>
+                                </li>
+                                <li class="app__side-item">
+                                    <a href="#" class="app__side-link" aria-label="Destinos">
+                                        <i class="fa-solid fa-route"></i>
+                                    </a>
+                                </li>
+                                <li class="app__side-item">
+                                    <a href="#" class="app__side-link" aria-label="Vehículos">
+                                        <i class="fa-solid fa-car-side"></i>
+                                    </a>
+                                </li>
+                                <li class="app__side-item app__side-item--settings">
+                                    <a href="#" class="app__side-link" aria-label="Configuración">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </aside>
 
-                <main class="app__main"></main>
+                <main class="app__main">
+                    <section class="app__route-builder" aria-labelledby="route-title">
+                        <nav class="app__topbar" aria-label="User menu">
+                            <button class="app__topbar-btn app__topbar-btn--menu" type="button" aria-label="Menu user">
+                                <i class="fa-solid fa-bars"></i>
+                            </button>
+
+                            <p class="app__route-kicker">Cotizador Logístico – LINHER</p>
+
+                            <div class="app__topbar-user" aria-label="Usuario">
+                                <img class="app__topbar-avatar" src="assets/avatars/avatar.png" alt="Foto de perfil" />
+                                <div class="app__topbar-meta">
+                                    <span class="app__topbar-hello">Hola,</span>
+                                    <span class="app__topbar-name">Joel</span>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <header class="app__route-header">
+                            <h1 id="route-title" class="app__route-title">
+                                ¿A dónde te diriges?
+                            </h1>
+                        </header>
+
+                        <section class="app__route-destinations app__route-destinations--initial" aria-label="Destinos">
+                            <ul class="app__route-list" id="routeList">
+                                <li class="app__route-item app__route-item--origin">
+                                    <i class="fa-solid fa-location-dot app__route-marker"></i>
+                                    <div class="app__route-field">
+                                        <input class="app__route-input" type="text" placeholder="Ciudad de México"
+                                            data-role="origin" readonly />
+
+                                        <button class="app__route-btn app__route-btn--search" type="button"
+                                            aria-label="Search route">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                    </div>
+
+                                    <button class="app__route-btn app__route-btn--params" type="button"
+                                        aria-label="Parámetros" disabled>
+                                        <i class="fa-solid fa-sliders"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="app__summary" aria-label="Resumen de ruta">
+                            <h2 class="app__summary-title">Resumen</h2>
+
+                            <div class="app__summary-grid">
+                                <!-- Card 1: Trip Info -->
+                                <article class="app__card card-trayecto">
+                                    <h3 class="app__card-title">Esta es la información del trayecto</h3>
+                                    <div class="app__separator-sm"></div>
+
+                                    <div class="app__info-row app__info-row--has-count">
+                                        <span class="app__label app__label--dark">Distancia recorrida</span>
+                                        <span class="app__count">
+                                            <i class="fa-solid fa-arrows-turn-to-dots"></i>
+                                            2
+                                        </span>
+                                        <span class="app__value app__value--red">2,030 km</span>
+                                    </div>
+                                    <div class="app__info-row app__info-row--has-count">
+                                        <span class="app__label app__label--dark">Tiempo de Viaje</span>
+                                        <span class="app__count">
+                                            <i class="fa-solid fa-arrows-turn-to-dots"></i>
+                                            2
+                                        </span>
+                                        <span class="app__value app__value--red">31 h 23 m</span>
+                                    </div>
+
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__info-row app__info-row--has-count">
+                                        <span class="app__label app__label--dark">Costo de casetas</span>
+                                        <span class="app__count">
+                                            <i class="fa-solid fa-arrows-turn-to-dots"></i>
+                                            2
+                                        </span>
+                                        <span class="app__value app__value--red">$0.00</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Maniobra LINHER</span>
+                                        <span class="app__value app__value--dark">1</span>
+                                    </div>
+                                </article>
+
+                                <!-- Card 3: Vehicle -->
+                                <article class="app__card card-vehiculo">
+                                    <h3 class="app__card-title">Estás utilizando el siguiente vehículo</h3>
+
+                                    <div class="app__separator-sm"></div>
+
+                                    <div class="app__vehicle-display">
+                                        <img src="assets/cars/nissan-np300.png" alt="Nissan NP300"
+                                            class="app__vehicle-img-lg" />
+                                        <p class="app__vehicle-name">NISSAN NP300</p>
+                                    </div>
+
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Rendimiento</span>
+                                        <span class="app__value app__value--dark">8 km/L</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Consumo</span>
+                                        <span class="app__value app__value--dark">203.00 L</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Precio de Gasolina</span>
+                                        <span class="app__value app__value--dark">$26.00/L</span>
+                                    </div>
+                                    <div class="app__info-row app__info-row--has-count">
+                                        <span class="app__label app__label--dark">Costo de Gasolina</span>
+                                        <span class="app__count">
+                                            <i class="fa-solid fa-arrows-turn-to-dots"></i>
+                                            2
+                                        </span>
+                                        <span class="app__value app__value--red">$5,278.00</span>
+                                    </div>
+                                </article>
+
+                                <!-- Card 2: Cost Breakdown -->
+                                <article class="app__card app__card--costs card-costos">
+                                    <h3 class="app__card-title">Este es el desglose de la cotización</h3>
+
+                                    <div class="app__separator-sm"></div>
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__section-label">Flete</div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Costo Logístico</span>
+                                        <span class="app__value app__value--red">$5,300.00</span>
+                                    </div>
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__section-label">Servicio</div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Interconexión</span>
+                                        <span class="app__value app__value--red">$0.00</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Tiempo de servicio</span>
+                                        <span class="app__value app__value--red">0 h 0 m</span>
+                                    </div>
+
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__section-label">Viáticos</div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Hospedaje</span>
+                                        <span class="app__value app__value--red">$0.00</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">Comidas</span>
+                                        <span class="app__value app__value--red">$0.00</span>
+                                    </div>
+
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">SUBTOTAL</span>
+                                        <span class="app__value app__value--red">$5,300.00</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">IVA</span>
+                                        <span class="app__value app__value--red">$848.00</span>
+                                    </div>
+
+                                    <div class="app__separator-normal"></div>
+
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark ">TOTAL NETO</span>
+                                        <span class="app__value app__value--red app__value--xl">$6,148.00</span>
+                                    </div>
+                                    <div class="app__info-row">
+                                        <span class="app__label app__label--dark">TIEMPO +
+                                            SERVICIOS</span>
+                                        <span class="app__value app__value--red app__value--xl">31 h 23 m</span>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </section>
+                </main>
 
                 <section class="app__map" aria-label="Map panel"></section>
 
-                <nav class="app__bottom-menu" aria-label="Bottom navigation"></nav>
+                <nav class="app__bottom-menu" aria-label="Bottom navigation">
+                    <a href="#" class="app__bottom-link app__bottom-link--active" aria-label="Inicio">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                    <a href="#" class="app__bottom-link" aria-label="Cotizaciones">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </a>
+                    <a href="#" class="app__bottom-link" aria-label="Destinos">
+                        <i class="fa-solid fa-route"></i>
+                    </a>
+                    <a href="#" class="app__bottom-link" aria-label="Vehículos">
+                        <i class="fa-solid fa-car-side"></i>
+                    </a>
+                </nav>
             </div>
             <section class="map-modal" aria-label="Map modal">
                 <div class="map-modal__panel" role="dialog" aria-modal="true" aria-label="Map">
