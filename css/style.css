@@ -1,23 +1,29 @@
 :root {
-    --bg: #f3f3f3;
+    /* Colors */
+    --bg-body: #f3f3f3;
+    --bg-frame: #ffffff;
+    --bg-main: #eef3f7;
+    --bg-map: #dddddd;
+
+    --text-primary: #111111;
+    --text-secondary: #6b7280;
+    --text-tertiary: #9ca3af;
+    --text-title: #7a7a7a;
+    --text-bolder: #111827;
+
+    --color-primary: #ef4444;
+    --border-color: #111111;
+    --separator-color: #e5e7eb;
 
     /* Card */
-    --frame: #ffffff;
     --card-radius: 30px;
     --card-border: 2px;
     --inner-radius: calc(var(--card-radius) - var(--card-border));
 
-    /* Wireframe colors */
-    --c-main: #eef3f7;
-    --c-map: #dddddd;
-
     /* Menu pill */
-    --side-pill-w: 58px;
-    --side-pill-color: #f24b4b;
-    --main-left-gutter: calc(var(--side-pill-w) + 5px);
-
-    /* Lines */
-    --border: #111;
+    --side-pill-w: 60px;
+    --side-pill-color: var(--color-primary);
+    --main-left-gutter: calc(var(--side-pill-w) + 16px);
 
     /* Mobile bottom nav */
     --bottom-menu-base: 60px;
@@ -62,8 +68,8 @@ body {
 body {
     margin: 0;
     font-family: var(--font-primary);
-    background: var(--bg);
-    color: #111;
+    background: var(--bg-body);
+    color: var(--text-primary);
 }
 
 /* =========================
@@ -76,7 +82,7 @@ body {
 .app {
     width: 100vw;
     height: 100svh;
-    background: var(--frame);
+    background: var(--bg-frame);
     overflow: hidden;
     position: relative;
 }
@@ -87,7 +93,7 @@ body {
 }
 
 .app__main {
-    background: var(--c-main);
+    background: var(--bg-main);
     min-height: 0;
 }
 
@@ -99,19 +105,46 @@ body {
 }
 
 .app__layout {
-    grid-template-rows: 1fr var(--bottom-menu-h);
+    grid-template-rows: auto 1fr var(--bottom-menu-h);
     grid-template-columns: 1fr;
 }
 
 .app__bottom-menu {
-    background: #f24b4b;
+    background: #fff;
     padding: 12px 16px;
     padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--separator-color);
 }
 
-/* En mobile, por ahora no mostramos map ni side-menu (wireframe) */
-.app__map,
+.app__bottom-link {
+    color: var(--text-tertiary);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    display: grid;
+    place-items: center;
+    transition: color 0.2s;
+}
+
+.app__bottom-link--active,
+.app__bottom-link:hover {
+    color: var(--color-primary);
+}
+
+/* On mobile, map is shown in home, summary hidden, side-menu hidden */
 .app__side-menu {
+    display: none;
+}
+
+.app__map {
+    display: block;
+    /* Map visible on mobile */
+}
+
+/* Summary hidden on mobile initially */
+.app__summary {
     display: none;
 }
 
@@ -137,8 +170,8 @@ body {
     bottom: calc(var(--bottom-menu-h) + 12px);
     height: min(60svh, 520px);
 
-    background: var(--c-map);
-    border: 3px solid var(--border);
+    background: var(--bg-map);
+    border: 3px solid var(--border-color);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
@@ -147,7 +180,7 @@ body {
 .map-modal__header {
     height: 52px;
     background: rgba(255, 255, 255, .65);
-    border-bottom: 3px solid var(--border);
+    border-bottom: 3px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -197,7 +230,7 @@ body {
 
 .app__topbar-btn i {
     font-size: 20px;
-    color: #111;
+    color: var(--text-primary);
 }
 
 .app__topbar-user {
@@ -221,13 +254,13 @@ body {
 
 .app__topbar-hello {
     font-size: 12px;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .app__topbar-name {
     font-size: 16px;
-    color: #111;
+    color: var(--text-primary);
     font-weight: 700;
 }
 
@@ -246,7 +279,7 @@ body {
     margin: 0 0 var(--rb-kicker-gap) 0;
     font-weight: 600;
     font-size: 1rem;
-    color: #111;
+    color: var(--text-primary);
 }
 
 .app__route-title {
@@ -255,7 +288,7 @@ body {
     font-size: var(--rb-title-size);
     line-height: var(--rb-title-leading);
     font-weight: 500;
-    color: #7a7a7a;
+    color: var(--text-title);
 }
 
 .app__route-destinations {
@@ -300,7 +333,7 @@ body {
     background: transparent;
     font-size: 1.05rem;
     font-weight: 500;
-    color: #6b7280;
+    color: var(--text-secondary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -314,7 +347,7 @@ body {
 
 .app__route-marker {
     font-size: var(--rb-icon-size);
-    color: #ef4444;
+    color: var(--color-primary);
 }
 
 /* Buttons */
@@ -329,7 +362,7 @@ body {
 
 .app__route-btn i {
     font-size: var(--rb-icon-size);
-    color: #111;
+    color: var(--text-primary);
 }
 
 /* Search button sits inside the field */
@@ -341,7 +374,7 @@ body {
     width: var(--rb-btn-size);
     height: var(--rb-btn-size);
     border-radius: 999px;
-    background: #ef4444;
+    background: var(--color-primary);
 }
 
 .app__route-btn--search i {
@@ -355,7 +388,7 @@ body {
 }
 
 .app__route-btn--params i {
-    color: #111;
+    color: var(--text-primary);
     font-size: var(--rb-icon-size);
 }
 
@@ -378,7 +411,7 @@ body {
 
 .app__route-add i {
     font-size: 14px;
-    color: #111;
+    color: var(--text-primary);
 }
 
 /* =========================
@@ -483,7 +516,7 @@ body {
     .app__map {
         grid-area: map;
         display: block;
-        background: var(--c-map);
+        background: var(--bg-map);
     }
 
     .app__bottom-menu {
@@ -504,21 +537,314 @@ body {
         height: 100%;
         background: var(--side-pill-color);
         border: 0;
-
-        /* pill pegada y sin “costura” visual */
+        /* pill attached without visual seam */
         border-top-left-radius: var(--inner-radius);
         border-bottom-left-radius: var(--inner-radius);
         border-top-right-radius: var(--inner-radius);
         border-bottom-right-radius: var(--inner-radius);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
     }
 
-    /* En desktop, el modal no aplica */
+    .app__side-nav {
+        width: 100%;
+        height: 100%;
+    }
+
+    .app__side-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        height: 100%;
+    }
+
+    .app__side-item--settings {
+        margin-top: auto;
+    }
+
+    .app__side-link {
+        display: grid;
+        place-items: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 22px;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+
+    .app__side-link:hover,
+    .app__side-link--active {
+        color: var(--side-pill-color);
+        background: #fff;
+    }
+
+    .app__side-logo {
+        background: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--side-pill-color);
+        font-size: 20px;
+    }
+
+    /* In desktop, modal does not apply */
     .map-modal {
         display: none !important;
     }
 
-    /* route builder en desktop sí limitamos ancho */
+    /* route builder in desktop limited width */
     .app__route-builder {
-        max-width: 720px;
+        max-width: 100%;
+        padding-right: 2rem;
     }
+
+    /* Desktop overrides */
+    .app__map {
+        grid-area: map;
+    }
+
+    .app__summary-grid {
+        grid-template-columns: 1fr 1fr;
+        /* Balanced columns */
+        gap: 1rem;
+        /* Medium gap */
+        align-items: start;
+    }
+
+    .app__summary {
+        display: block;
+        /* Visible on desktop */
+    }
+
+}
+
+
+/* =========================
+   SUMMARY & SKELETONS
+========================= */
+.app__summary {
+    margin-top: 1rem;
+    /* Mobile: hidden initially */
+}
+
+
+
+.app__summary-title {
+    color: var(--text-title);
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 1rem;
+    letter-spacing: -0.4px;
+    font-size: 1.5rem;
+}
+
+.app__summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.card-trayecto {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.card-vehiculo {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.card-costos {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+.app__card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 0rem 1.1rem 0.5rem 1.1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.app__card--costs {
+    height: 100%;
+}
+
+.app__card-title {
+    font-size: 0.6rem;
+    text-align: center;
+    font-weight: 450;
+    margin-bottom: 0;
+    color: var(--text-bolder);
+}
+
+.app__info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.2rem;
+}
+
+.app__info-row--has-count {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    /* Fixed width for alignment */
+    align-items: center;
+}
+
+.app__info-row--has-count .app__value {
+    justify-self: end;
+}
+
+.app__info-row--has-count .app__count {
+    justify-self: center;
+}
+
+.app__label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.app__label--bold {
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+
+.app__section-label {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+
+/* Summary Details */
+.app__value {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+}
+
+.app__value--red {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.app__value--dark {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.app__value--xl {
+    font-size: 1.0rem;
+    font-weight: 600;
+}
+
+.app__label--dark {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.7rem;
+}
+
+.app__label--bolder {
+    font-weight: 800;
+}
+
+.app__separator-sm {
+    height: 1px;
+    background: var(--separator-color);
+    margin: 0.4rem 0;
+}
+
+.app__separator-normal {
+    height: 0px;
+    background: var(--separator-color);
+    margin: 0.5rem 0;
+}
+
+/* Dynamic Count Styles */
+.app__count {
+    font-size: 0.7rem;
+    color: var(--text-bolder);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #f3f3f3;
+    /* Slight bg for contrast? or transparent */
+    background: transparent;
+}
+
+.app__count i {
+    font-size: 0.5rem;
+    /* slightly larger icon */
+    color: var(--text-primary);
+}
+
+/* Vehicle Card */
+.app__vehicle-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app__vehicle-img-lg {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.app__vehicle-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Next Button in Costs Card */
+.app__card-next {
+    margin-top: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    border: 0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    align-self: flex-end;
+    /* Push to right */
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    transition: transform 0.2s;
+}
+
+.app__card-next:hover {
+    transform: scale(1.05);
+}
+
+.app__card--costs {
+    position: relative;
+    /* for button positioning */
+    display: flex;
+    flex-direction: column;
 }
